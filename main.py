@@ -1,4 +1,4 @@
-def func():
+def f():
     print("Hello World")
 
-func()
+f()
