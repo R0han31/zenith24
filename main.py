@@ -3,7 +3,7 @@ def f():
     print("Good luck")
 
 def add(a,b):
-    return a - b
+    return a + b
 
 f()
 print(add(5,10))
