@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bill</title>
+    <style>
+        table {
+            font-family: Arial, sans-serif;
+            border-collapse: collapse;
+            width: 50%;
+            margin: 20px auto;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #c9e3ff; /* Changed to light blue */
+        }
+
+        input[type="text"] {
+            margin: 10px;
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bill</h1>
+    <table>
+        <tr>
+            <th>Item</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Delete</th>
+        </tr>
+        {% for item, details in bill_items.items() %}
+        <tr>
+            <td>{{ item }}</td>
+            <td>{{ details['price'] }}</td>
+            <td>{{ details['quantity'] }}</td>
+            <td>
+                <form action="/delete_item" method="post">
+                    <input type="hidden" name="item" value="{{ item }}">
+                    <input type="text" name="code" placeholder="Enter security code">
+                    <input type="submit" value="Delete">
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <td colspan="4" style="text-align: right;">Total: {{ total_bill }}</td>
+        </tr>
+    </table>
+</body>
+</html>
